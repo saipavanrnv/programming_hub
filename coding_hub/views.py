@@ -33,7 +33,7 @@ class Authentication(TemplateView):
             if user is not None:
                 login(request, user)
                 group = request.user.groups.values_list('name', flat=True).first()
-                if group == 'Instructor':
+                if group == 'Java_Instructor' or group == 'Python_Instructor':
                     return redirect('instructor_home')
                 else:
                     return redirect('user_home')
@@ -57,7 +57,6 @@ class Authentication(TemplateView):
         if request.method == 'POST':
             form = NewUserForm(request.POST)
             group = request.POST.get('group')
-            form.fields['group'].choices = [('group','group')]
             if form.is_valid():
                 user = form.save()
                 group = form.cleaned_data['group']
@@ -71,6 +70,6 @@ class ViewFiles(TemplateView):
     def view(request):
         user = auth.get_user(request)
         group = request.user.groups.values_list('name', flat=True).first()
-        path = '/home/kiran/programming_hub/'+group +'/'  # insert the path to your directory
+        path = '/home/pavan/Desktop/programming_hub/'+group +'/'  # insert the path to your directory
         file_list = os.listdir(path)
         return render(request, 'view_files.html', {'files': file_list})

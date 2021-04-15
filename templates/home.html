@@ -9,8 +9,7 @@
 <div class="w3-bar w3-theme">
   <a href="instructor_home" class="w3-bar-item w3-button w3-padding-16">Home</a>
 <a href="{% url 'logout' %}" class="w3-button w3-padding-16 navbar-right">Logout</a>
-  {% for group in user.groups.all %}
-        {% if group.name == 'Instructor'%}
+
   <div class="w3-dropdown-hover">
     <button class="w3-button w3-padding-16">
       View People <i class="fa fa-caret-down"></i>
@@ -24,7 +23,8 @@
 </div>
 <hr>
 <div class="w3-row-padding">
-
+  {% for group in user.groups.all %}
+        {% if group.name == 'Python_Instructor'%}
 <div class="w3-third">
 <div class="w3-card-4">
   <a href="#" style="text-decoration:none;">
@@ -35,7 +35,8 @@
   </a>
 </div>
 </div>
-
+{% endif %}
+{% if group.name == 'Java_Instructor'%}
 <div class="w3-third">
 <div class="w3-card-4">
   <a href="#" style="text-decoration:none;">
@@ -46,6 +47,8 @@
   </a>
 </div>
 </div>
+{% endif %}
+{% if group.name == 'C++_Instructor'%}
 
 <div class="w3-third">
 <div class="w3-card-4">

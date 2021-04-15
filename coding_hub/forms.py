@@ -11,7 +11,7 @@ class NewUserForm(UserCreationForm):
     """
     Used for register account
     """
-    group = forms.ModelChoiceField(queryset=Group.objects.all().exclude(name = "Instructor"), required=True)
+    group = forms.CharField(required=True)
     class Meta: #pylint: disable=too-few-public-methods
         """
         For including fields for register
