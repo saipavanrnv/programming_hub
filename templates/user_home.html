@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<h1> Welcome to Coding and Programming hub</h1>
+<div class="w3-bar w3-theme">
+  <a href="{% url 'user_home' %}" class="w3-bar-item w3-button w3-padding-16">Home</a>
+<a href="{% url 'logout' %}" class="w3-button w3-padding-16 navbar-right">Logout</a>
+</div>
+<hr>
+{% for group in user.groups.all %}
+      {% if group.name == 'Python'%}
+      <div class="w3-third">
+        <div class="w3-card-4">
+          <a href="{% url 'view_files' %}" style="text-decoration:none;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLk0jLzTMvd2GfwVZp22BNeUWUsRQJdjWtDQ&usqp=CAU" alt="Python" style="width:100%">
+            <div class="w3-container">
+              <p>Python</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endif %}
+      {% if group.name == 'Java'%}
+      <div class="w3-third">
+      <div class="w3-card-4">
+        <a href="#" style="text-decoration:none;">
+        <img src="https://www.learnjavaonline.org/static/img/share-logos/learnjavaonline.org.png" alt="Java" style="width:100%">
+        <div class="w3-container">
+        <p>Java</p>
+        </div>
+        </a>
+      </div>
+      </div>
+      {% endif %}
+      {% if group.name == 'C++'%}
+      <div class="w3-third">
+      <div class="w3-card-4">
+        <a href="#" style="text-decoration:none;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQITqQcSTC3n6xx_OYLbhLCSVohiC2iu-d8Ww&usqp=CAU" alt="C++" style="width:100%">
+        <div class="w3-container">
+        <p>C++</p>
+        </div>
+        </a>
+      </div>
+      </div>
+      {% endif %}
+{% endfor %}

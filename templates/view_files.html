@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<h1> Welcome to Coding and Programming hub</h1>
+<div class="w3-bar w3-theme">
+  <a href="{% url 'user_home' %}" class="w3-bar-item w3-button w3-padding-16">Home</a>
+<a href="{% url 'logout' %}" class="w3-button w3-padding-16 navbar-right">Logout</a>
+</div>
+<hr>
+{% for group in user.groups.all %}
+      {% if group.name == 'Python'%}
+<ul>
+  {% for file in files %}
+  <a href="/home/kiran/programming_hub/Python/" download="course_content.pdf">{{file}}</a>
+<li> {{file}}</li>
+{% endfor %}
+
+  </ul>
+  {% endif %}
+  {% endfor %}
