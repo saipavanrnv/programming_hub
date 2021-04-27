@@ -15,22 +15,21 @@
       {% if group.name == 'Python'%}
 <ul>
   {% for file in files %}
-  <a href="/home/pavan/Desktop/programming_hub/Python/" download="course_content.pdf">{{file}}</a>
-<li> {{file}}</li>
+  <a href="{% url 'download_pdf' file %} " target="_blank">{{file}}</a> <br>
 {% endfor %}
   </ul>
   {% endif %}
   {% if group.name == 'Java'%}
 <ul>
 {% for file in files %}
-<a href="/home/pavan/Desktop/programming_hub/Java/" download="course_content.pdf">{{file}}</a>
+<a href="{% url 'download_pdf' %}" download="course_content.pdf">{{file}}</a>
 {% endfor %}
 </ul>
 {% endif %}
 {% if group.name == 'C++'%}
 <ul>
 {% for file in files %}
-<a href="/home/pavan/Desktop/programming_hub/C++/" download="course_content.pdf">{{file}}</a>
+<a href="{% url 'download_pdf' %}" download="course_content.pdf">{{file}}</a>
 {% endfor %}
 </ul>
 {% endif %}

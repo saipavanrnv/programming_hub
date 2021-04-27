@@ -20,10 +20,11 @@ urlpatterns = [
     path('instructor_home/', HomepageView.instructor_home, name='instructor_home'),
     path('user_home/', HomepageView.user_home, name = 'user_home'),
     path('admin/', admin.site.urls),
-    path('login/',Authentication.login_request,name = 'login'),
+    path('',Authentication.login_request,name = 'login'),
     path('logout/',Authentication.logout_request,name='logout'),
-    path('',Authentication.register_request,name = 'register'),
-    path('view_files', ViewFiles.view, name = 'view_files')
+    path('register/',Authentication.register_request,name = 'register'),
+    path('view_files', ViewFiles.view, name = 'view_files'),
+    path('download_pdf/<str:file>/', ViewFiles.download_pdf, name='download_pdf'),
 
 
 ]

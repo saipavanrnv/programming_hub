@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
 from django.contrib import messages
 import os
+from django.http import HttpResponse
 # Create your views here.
 
 class HomepageView(TemplateView): #pylint: disable = no-member
@@ -70,6 +71,17 @@ class ViewFiles(TemplateView):
     def view(request):
         user = auth.get_user(request)
         group = request.user.groups.values_list('name', flat=True).first()
-        path = '/home/pavan/Desktop/programming_hub/'+group +'/'  # insert the path to your directory
+        path = '/home/kiran/Desktop/programming_hub/'+group +'/'  # insert the path to your directory
         file_list = os.listdir(path)
         return render(request, 'view_files.html', {'files': file_list})
+
+    def download_pdf(request,file):
+        user = auth.get_user(request)
+        group = request.user.groups.values_list('name', flat=True).first()
+        path = '/home/kiran/programming_hub/'+group +'/'
+        file_path = os.path.join(path, file)
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as fh:
+                response = HttpResponse(fh.read(), content_type="application/pdf")
+                response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+                return response
